@@ -3,17 +3,29 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+        
         <script>
+            const lexic = ['chips de maïs', 'ceviche de poisson blanc', 'saumon', 'guacamole', 'citron épicé', 'nori', 'mayonnaise japonaise', 'coriandre', 'sashimis de yellowtail', 'sauce ponzu', 'huile de truffe', 'truffe fraîche', 'mesclun', 'vinaigrette au miel', 'feuille de riz',
+                        'épinard', 'oignon', 'carotte', 'mangue', 'avocat', 'homard', 'concombre', 'sauce sweet chili', 'pate de crabe décortiquée puis cuit aux grill', 'sauce sésame miso', 'brunoise d’échalottes', 'tomates', 'herbes aromatiques', 'maki roll en tempura',
+                        'cream cheese', 'sauce teriyaki', 'sésame', 'cébette', 'tartare de ventrêche de thon', 'chips de patate douce', 'oeuf de caille', 'caviar', 'king crab blanchit', 'oeuf tobico', 'chips de lotus grillé', 'vinaigrette au vinaigre rouge',
+                        'salade iceberg', 'sauce oignon', 'pignons de pins', 'épinard blanchis', 'seiches croustillants', 'piments padron', 'citron vert au shishimi togarachi', 'mayonnaise wasabi', 'tranche de thon en tataki', 'saisi en extérieur', 'sauce yuzu miso',
+                        'cru à l’intérieur', 'salade vinaigrette wasabi', 'crevette', 'shofshell crab frit', 'tartare de thon épicé', 'choux chinois', 'king crab', 'toro', 'caviar feuille d’or', 'asperge', 'salade', 'patate douce', 'thon', 'tamago', 'kampyo', 'masago',
+                        'radis', 'anguille', 'foie gras', 'sunomono de pomme verte', 'la yu', 'feuille de soja', 'ciboulette', 'black cod', 'miso', 'tamarin', 'asperges grillées', 'sauce sésame', 'brocollini vapeur', 'champignons portobello', 'nouille de riz',
+                        'légumes sautés', 'avec ou sans calamar', 'brocoli', 'choux fleurs', 'thon épicé', 'gingembre', 'piment padron', 'yellowtail', 'crevette d’eau douce', 'ventrèche de thon snakée', 'chips de poireaux', 'oeuf de sardine', 'oeuf', 'poisson blanc',
+                        'zest de citron vert', 'gingembre confit', 'turbot braisé', 'yukari', 'citron vert', 'anguille grillée au soja', 'pickels d’oeuf de caille', 'saumon braisé', 'fleur de sel'];
+
             const gamelist = [
                 {0: {id: 'Taco Sakana', ingredients: ['chips de maïs', 'ceviche de poisson blanc', 'saumon', 'guacamole', 'citron épicé', 'nori', 'mayonnaise japonaise', 'coriandre']}},
-                {1: {id: 'New Style Hamachi', ingredients: ['sashimi de yellowtail', 'sauce ponzu', 'huile de truffe', 'truffe fraîche', 'mesclun', 'vinaigrette au miel']}},
+                {1: {id: 'New Style Hamachi', ingredients: ['sashimis de yellowtail', 'sauce ponzu', 'huile de truffe', 'truffe fraîche', 'mesclun', 'vinaigrette au miel']}},
                 {2: {id: 'Spring rolls de homard', ingredients: ['feuille de riz', 'épinard', 'oignon', 'carotte', 'mangue', 'avocat', 'homard', 'coriandre', 'concombre', 'mayonnaise japonaise', 'sauce sweet chili']}},
                 {3: {id: 'Patte de crabe grillée miso', ingredients: ['pate de crabe décortiquée puis cuit aux grill', 'sauce sésame miso', 'brunoise d’échalottes', 'tomates', 'herbes aromatiques']}},
                 {4: {id: 'Hot Yakuza', ingredients: ['maki roll en tempura', 'saumon', 'cream cheese', 'sauce teriyaki', 'sésame', 'cébette']}},
-                {5: {id: 'Tartare de Toro', ingredients: ['tartare de ventrêche de thon,', 'sauce ponzu', 'chips de patate douce,', 'oeuf de caille,', 'caviar', 'chips de maïs']}},
+                {5: {id: 'Tartare de Toro', ingredients: ['tartare de ventrêche de thon', 'sauce ponzu', 'chips de patate douce', 'oeuf de caille', 'caviar', 'chips de maïs']}},
                 {6: {id: 'Salade King Crab', ingredients: ['king crab blanchit', 'oeuf tobico', 'mesclun', 'avocat', 'chips de lotus grillé', 'vinaigrette au vinaigre rouge']}},
                 {7: {id: 'Salade Crunch', ingredients: ['salade iceberg', 'sauce oignon', 'pignons de pins', 'chips de lotus grillé', 'nori']}},
                 {8: {id: 'Horenso no goma', ingredients: ['épinard blanchis', 'sauce sésame', 'chips de lotus grillé']}},
@@ -33,20 +45,20 @@
                 {22: {id: 'Brocollini', ingredients: ['brocollini vapeur,', 'sauce sésame']}},
                 {23: {id: 'Champignon ', ingredients: ['champignons portobello', 'sauce sésame']}},
                 {24: {id: 'Nouilles Udon', ingredients: ['nouille de riz', 'sauce sweet chili', 'légumes sautés', 'avec ou sans calamar']}},
-                {25: {id: 'Tempura Ebi', ingredients: ['brocoli', 'carottes', 'choux fleurs', 'patate douce', 'oignons']}},
+                {25: {id: 'Tempura Ebi', ingredients: ['brocoli', 'carotte', 'choux fleurs', 'patate douce', 'oignon']}},
                 {26: {id: 'Gunkan Padron', ingredients: ['thon épicé', 'saumon', 'gingembre', 'piment padron', 'oeuf tobico', 'mayonnaise wasabi']}},
                 {27: {id: 'Gunkan Hotate', ingredients: ['thon', 'saint jacques', 'vinaigrette soja', 'oeuf tobico']}},
-                {28: {id: 'Gunkan Roi', ingredients: ['saumon', 'king crab', 'oeuf de caille', 'oeufs tobico']}},
+                {28: {id: 'Gunkan Roi', ingredients: ['saumon', 'king crab', 'oeuf de caille', 'oeuf tobico']}},
                 {29: {id: 'Gunkan Ama Ebi', ingredients: ['yellowtail', 'crevette d’eau douce', 'mayonnaise wasabi', 'chips de patate douce']}},
                 {30: {id: 'Gunkan Toro', ingredients: ['ventrèche de thon snakée', 'thon', 'foie gras', 'chips de poireaux']}},
                 {31: {id: 'Gunkan Iwashi', ingredients: ['thon', 'oeuf de sardine', 'oeuf']}},
                 {32: {id: 'Gunkan Shiromi', ingredients: ['poisson blanc', 'zest de citron vert', 'gingembre confit']}},
                 {33: {id: 'Nigiri New Style', ingredients: ['saumon', 'gingembre confit', 'zest de citron vert']}},
                 {34: {id: 'Nigiri Engawa', ingredients: ['turbot braisé', 'yukari', 'citron vert', 'coriandre']}},
-                {35: {id: 'Nigiri anguille foie gras', ingredients: ['anguille grillée au soja', 'sunomono pomme verte', 'foie gras', 'sauce teryaki']}},
+                {35: {id: 'Nigiri anguille foie gras', ingredients: ['anguille grillée au soja', 'sunomono de pomme verte', 'foie gras', 'sauce teryaki']}},
                 {36: {id: 'Nigiri thon tamago', ingredients: ['thon', 'pickels d’oeuf de caille', 'oeuf de sardine', 'coriandre', 'tamago']}},
                 {37: {id: 'Nigiri saumon truffe', ingredients: ['saumon braisé', 'fleur de sel', 'truffe fraîche']}}
-            ]
+            ];
 
             function replace_dish_name(name) {
                 $("#dishtitle").text(name);
@@ -54,9 +66,14 @@
 
             function add_dish_input(x) {
                 var ingredient_idx = 0;
+                var options = '';
+
+                for (const name of lexic.sort()) {
+                    options += "<option>" + name + "</option>";
+                }
 
                 for (const element of gamelist[x][x].ingredients) {
-                    $("#gamewrapper").append("<p><input type='text' class='igdt-input form-control' id='ingredient-" + ingredient_idx + "'></input></p>");
+                    $("#gamewrapper").append("<p><select class='igdt-input form-control' id='ingredient-" + ingredient_idx + "'><option value='' selected disabled hidden>Choose here</option>" + options + "</select></p>");
 
                     $('#ingredient-' + ingredient_idx).on('input', function(){
                         for (const idgt of gamelist[x][x].ingredients) {
