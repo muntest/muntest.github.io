@@ -56,7 +56,7 @@
                 var ingredient_idx = 0;
 
                 for (const element of gamelist[x][x].ingredients) {
-                    $("#gamewrapper").append("<p><input class='igdt-input form-control' id='ingredient-" + ingredient_idx + "'></input></p>");
+                    $("#gamewrapper").append("<p><input type='text' class='igdt-input form-control' id='ingredient-" + ingredient_idx + "'></input></p>");
 
                     $('#ingredient-' + ingredient_idx).on('input', function(){
                         for (const idgt of gamelist[x][x].ingredients) {
