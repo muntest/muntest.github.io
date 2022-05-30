@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+        <script>
+            const gamelist = [
+                {0: {id: 'Taco Sakana', ingredients: ['chips de maïs', 'ceviche de poisson blanc', 'saumon', 'guacamole', 'citron épicé', 'nori', 'mayonnaise japonaise', 'coriandre']}},
+                {1: {id: 'New Style Hamachi', ingredients: ['sashimi de yellowtail', 'sauce ponzu', 'huile de truffe', 'truffe fraîche', 'mesclun', 'vinaigrette au miel']}},
+                {2: {id: 'Spring rolls de homard', ingredients: ['feuille de riz', 'épinard', 'oignon', 'carotte', 'mangue', 'avocat', 'homard', 'coriandre', 'concombre', 'mayonnaise japonaise', 'sauce sweet chili']}},
+                {3: {id: 'Patte de crabe grillée miso', ingredients: ['pate de crabe décortiquée puis cuit aux grill', 'sauce sésame miso', 'brunoise d’échalottes', 'tomates', 'herbes aromatiques']}},
+                {4: {id: 'Hot Yakuza', ingredients: ['maki roll en tempura', 'saumon', 'cream cheese', 'sauce teriyaki', 'sésame', 'cébette']}},
+                {5: {id: 'Tartare de Toro', ingredients: ['tartare de ventrêche de thon,', 'sauce ponzu', 'chips de patate douce,', 'oeuf de caille,', 'caviar', 'chips de maïs']}},
+                {6: {id: 'Salade King Crab', ingredients: ['king crab blanchit', 'oeuf tobico', 'mesclun', 'avocat', 'chips de lotus grillé', 'vinaigrette au vinaigre rouge']}},
+                {7: {id: 'Salade Crunch', ingredients: ['salade iceberg', 'sauce oignon', 'pignons de pins', 'chips de lotus grillé', 'nori']}},
+                {8: {id: 'Horenso no goma', ingredients: ['épinard blanchis', 'sauce sésame', 'chips de lotus grillé']}},
+                {9: {id: 'Ika Crispy', ingredients: ['seiches croustillants', 'piments padron', 'citron vert au shishimi togarachi', 'mayonnaise wasabi']}},
+                {10: {id: 'Tataki de thon', ingredients: ['tranche de thon en tataki', 'saisi en extérieur', 'sauce yuzu miso', 'cru à l’intérieur', 'salade vinaigrette wasabi', 'chips de lotus grillé']}},
+                {11: {id: 'California ', ingredients: ['saumon', 'crevette', 'concombre', 'mangue', 'mayonnaise japonaise', 'oeuf tobico']}},
+                {12: {id: 'Spider roll', ingredients: ['feuille de riz', 'shofshell crab frit', 'saumon', 'avocat']}},
+                {13: {id: 'Spicy tuna', ingredients: ['tartare de thon épicé', 'choux chinois', 'oeuf tobico', 'chips de lotus grillé']}},
+                {14: {id: 'Maki Toro', ingredients: ['nori', 'sauce ponzu', 'king crab', 'toro', 'caviar feuille d’or']}},
+                {15: {id: 'Ura Veggie', ingredients: ['asperge', 'carotte', 'épinard', 'salade', 'patate douce']}},
+                {16: {id: 'Futomaki', ingredients: ['feuille de riz', 'thon', 'saumon', 'tamago', 'avocat', 'kampyo', 'masago', 'concombre', 'radis', 'sauce yuzu miso']}},
+                {17: {id: 'Unagui', ingredients: ['anguille', 'foie gras', 'sunomono de pomme verte', 'sauce teriyaki']}},
+                {18: {id: 'Yakuza First Choice', ingredients: ['saumon', 'toro', 'la yu', 'king crab', 'patate douce', 'feuille de soja']}},
+                {19: {id: 'Hosomaki Toro', ingredients: ['toro', 'ciboulette', 'feuille de riz']}},
+                {20: {id: 'Kuro Tara Gindara', ingredients: ['black cod', 'sésame', 'miso', 'tamarin']}},
+                {21: {id: 'Asperges Yaki', ingredients: ['asperges grillées', 'sauce sésame']}},
+                {22: {id: 'Brocollini', ingredients: ['brocollini vapeur,', 'sauce sésame']}},
+                {23: {id: 'Champignon ', ingredients: ['champignons portobello', 'sauce sésame']}},
+                {24: {id: 'Nouilles Udon', ingredients: ['nouille de riz', 'sauce sweet chili', 'légumes sautés', 'avec ou sans calamar']}},
+                {25: {id: 'Tempura Ebi', ingredients: ['brocoli', 'carottes', 'choux fleurs', 'patate douce', 'oignons']}},
+                {26: {id: 'Gunkan Padron', ingredients: ['thon épicé', 'saumon', 'gingembre', 'piment padron', 'oeuf tobico', 'mayonnaise wasabi']}},
+                {27: {id: 'Gunkan Hotate', ingredients: ['thon', 'saint jacques', 'vinaigrette soja', 'oeuf tobico']}},
+                {28: {id: 'Gunkan Roi', ingredients: ['saumon', 'king crab', 'oeuf de caille', 'oeufs tobico']}},
+                {29: {id: 'Gunkan Ama Ebi', ingredients: ['yellowtail', 'crevette d’eau douce', 'mayonnaise wasabi', 'chips de patate douce']}},
+                {30: {id: 'Gunkan Toro', ingredients: ['ventrèche de thon snakée', 'thon', 'foie gras', 'chips de poireaux']}},
+                {31: {id: 'Gunkan Iwashi', ingredients: ['thon', 'oeuf de sardine', 'oeuf']}},
+                {32: {id: 'Gunkan Shiromi', ingredients: ['poisson blanc', 'zest de citron vert', 'gingembre confit']}},
+                {33: {id: 'Nigiri New Style', ingredients: ['saumon', 'gingembre confit', 'zest de citron vert']}},
+                {34: {id: 'Nigiri Engawa', ingredients: ['turbot braisé', 'yukari', 'citron vert', 'coriandre']}},
+                {35: {id: 'Nigiri anguille foie gras', ingredients: ['anguille grillée au soja', 'sunomono pomme verte', 'foie gras', 'sauce teryaki']}},
+                {36: {id: 'Nigiri thon tamago', ingredients: ['thon', 'pickels d’oeuf de caille', 'oeuf de sardine', 'coriandre', 'tamago']}},
+                {37: {id: 'Nigiri saumon truffe', ingredients: ['saumon braisé', 'fleur de sel', 'truffe fraîche']}}
+            ]
+
+            function replace_dish_name(name) {
+                $("#dishtitle").text(name);
+            }
+
+            function add_dish_input(x) {
+                var ingredient_idx = 0;
+
+                for (const element of gamelist[x][x].ingredients) {
+                    $("#gamewrapper").append("<p><input class='igdt-input form-control' id='ingredient-" + ingredient_idx + "'></input></p>");
+
+                    $('#ingredient-' + ingredient_idx).on('input', function(){
+                        for (const idgt of gamelist[x][x].ingredients) {
+                            if (this.value.toLowerCase() === idgt) {
+                                $(this).css('background-color', '#5cb85c');
+                            }
+                        }
+                    });
+
+                    ingredient_idx += 1;
+                }
+            }
+
+            function populate_game() {
+                var id_rand = Math.floor(Math.random() * 38);
+                var dish_name = gamelist[id_rand][id_rand].id;
+
+                replace_dish_name(dish_name);
+                add_dish_input(id_rand);
+            }
+
+            $(function(){
+
+                $(document).ready(function() {
+                    $("#gamewrapper").html('');
+                    populate_game();
+                });
+
+                $("#nextguess").on("click", function(){
+                    $("#gamewrapper").html('');
+                    populate_game();
+                });
+                
+            });
+        </script>
+    </head>
+    
+    <body>
+        <div class="container">
+            <h1 class="text-center">Yakukoi</h1>
+
+            <h4 id="dishtitle"></h4>
+
+            <div id="gamewrapper" class="container"></div>
+
+            <button type="button" id="nextguess" class="btn btn-info center-block">Next</button>
+        </div>
+    </body>
+</html>
