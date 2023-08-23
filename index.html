@@ -10,54 +10,77 @@
 
         
         <script>
-            const lexic = ['chips de maïs', 'ceviche de poisson blanc', 'saumon', 'guacamole', 'citron épicé', 'nori', 'mayonnaise japonaise', 'coriandre', 'sashimis de yellowtail', 'sauce ponzu', 'huile de truffe', 'truffe fraîche', 'mesclun', 'vinaigrette au miel', 'feuille de riz',
-                        'épinard', 'oignon', 'carotte', 'mangue', 'avocat', 'homard', 'concombre', 'sauce sweet chili', 'pate de crabe décortiquée puis cuit aux grill', 'sauce sésame miso', 'brunoise d’échalottes', 'tomates', 'herbes aromatiques', 'maki roll en tempura',
-                        'cream cheese', 'sauce teriyaki', 'sésame', 'cébette', 'tartare de ventrêche de thon', 'chips de patate douce', 'oeuf de caille', 'caviar', 'king crab blanchit', 'oeuf tobico', 'chips de lotus grillé', 'vinaigrette au vinaigre rouge',
-                        'salade iceberg', 'sauce oignon', 'pignons de pins', 'épinard blanchis', 'seiches croustillants', 'piments padron', 'citron vert au shishimi togarachi', 'mayonnaise wasabi', 'tranche de thon en tataki', 'saisi en extérieur', 'sauce yuzu miso',
-                        'cru à l’intérieur', 'salade vinaigrette wasabi', 'crevette', 'shofshell crab frit', 'tartare de thon épicé', 'choux chinois', 'king crab', 'toro', 'caviar feuille d’or', 'asperge', 'salade', 'patate douce', 'thon', 'tamago', 'kampyo', 'masago',
-                        'radis', 'anguille', 'foie gras', 'sunomono de pomme verte', 'la yu', 'feuille de soja', 'ciboulette', 'black cod', 'miso', 'tamarin', 'asperges grillées', 'sauce sésame', 'brocollini vapeur', 'champignons portobello', 'nouille de riz',
-                        'légumes sautés', 'avec ou sans calamar', 'brocoli', 'choux fleurs', 'thon épicé', 'gingembre', 'piment padron', 'yellowtail', 'crevette d’eau douce', 'ventrèche de thon snakée', 'chips de poireaux', 'oeuf de sardine', 'oeuf', 'poisson blanc',
-                        'zest de citron vert', 'gingembre confit', 'turbot braisé', 'yukari', 'citron vert', 'anguille grillée au soja', 'pickels d’oeuf de caille', 'saumon braisé', 'fleur de sel'];
+            const lexic = ['Edamame', 'Sel de miso', 'Edamame Spicy Sauce', 'Riz soufflé', 'Tartare de saumon', 'Mayonnaise chili garlic', 'Rumsteak de wagyu gravelax', 'Tobiko parfumé au wasabi', 'Huile d\'olive', 'Avocat', 'Mayonnaise japonaise', 'Citron vert',
+        'Fine galette de riz', 'Tarama blanc a la truffe', 'Tranches de thon', 'Tobiko', 'Vinaigrette ponzu truffe', 'Zest de citron vert', 'Shiso rouge', 'Vene cress', 'Crevettes de roche en tempura', 'Mayonnaise chili', 'Citron', 'Baeri caviar', 'Blinis', 'Jaune d\'oeuf', 'Blanc d\'oeuf',
+        'Echalotes', 'Capres', 'Cornichons', 'Creme d\'isigny', 'Caviar Osciètre', 'Poulpe', 'Vinaigrette yuzu kosho', 'Shiso', 'Marinade ponzu', 'Pousse de mizuna', 'Mélange de graine crispy (sésame, riz soufflé et sarrasin soufflé)', 'Carpaccio de Hamachi', 'Julienne de jalpenos',
+        'Oignons rouges', 'Cébettes', 'Oeuf de brochet fumé', 'Carpaccio de langoustine', 'Langoustine en carpaccio', 'Gel de dashi', 'Citron caviar', 'Graines de sesame', 'Pousse de coriandre', 'Oxalis rouge', 'Pois gourmands', 'Thon passé au sel, cuit façon tataki', 'Chips d’ail',
+        'Coriander cress', 'Vinaigrette ponzu marinade oignons', 'Vinaigrette truffée', 'Portobello', 'Boeuf en tataki', 'Champignons portobello (frits et en brunoise – cuit avec huile de sésame)', 'Sésame', 'Vinaigrette miso', 'Carotte', 'Menthe', 'Coriandre', 'Julienne de carotte',
+        'Sucrine', 'Marinade black cod (mirin, miso, sucre et saké)', 'Vinaigre de xéres', 'Huile de noisette', 'Huile de tournesol', 'Vinaigrette sésame yuzu', 'Jalapenos', 'Salicorne', 'Tartare de daurade', 'Vinaigrette sésame', 'Yuzu confit', 'Vinaigrette gingembre', 'Thon rouge en tartare',
+        'Oignons pickles', 'Togarashi', 'Chips de riz furikake', 'Ciboulette', 'Jus de citron vert', 'Saumon d’Atlantique', 'Mayonnaise sriracha', 'Thon rouge', 'Fleur de sel', 'Gamberro rosso', 'Avocat fumé grillé', 'Concombre', 'Cream cheese', 'Shiso vert',
+        'Sauce teriyaki', 'Sésame doré', 'Mayonnaise wasabi', 'Gambas panko', 'Furikake', 'Mayonnaise chipotlé', 'Mayonnaise iodée', 'Tartare de boeuf', 'Céleri branche', 'Mayonnaise timut', 'Bonite séchée', 'Tartare de thon assaisonné au chili garlic', 'Sauce soja yamato', 'King crab',
+        'Pommes grany smith', 'Haut de cuisses de poulet mariné', 'Ail', 'Aji amarillo', 'Grillé à la robata puis glacé au mirin', 'Crevettes marinées au gingembre, ail haché, togarashi', 'Condiment ume kosho', 'Poutargue', 'Parmesan', 'Oignons frits', 'Vinaigrette : huile de truffe, yuzu et citron vert',
+        'Quinoa', 'Vinaigrette miso-yuzu', 'Copeaux de radis rouge', 'Homard', 'Mix de quinoa blanc et rouge', 'Edamame décortiqués', 'Sauce vierge froide', 'Tomates', 'Navet long', 'Pousse cress vénéré', 'Poulet mariné dans lait ribot', 'Ail haché', 'Mayonnaise ume', 'Poulpe mariné et grillé à l’huile d’olive',
+        'Purée de pommes de terre à l’ail rapé et coriandre ciselée', 'Vinaigrette à l’échalotte', 'Maïs grillé au barbecue et assaisonné avec sauce teriyaki', 'Pickles de concombre', 'Colin d’Alaska', 'Coeur de filet de bœuf, saisi et fumé au robata', 'Sauce teriyaki au poivre',
+        'Faux filet de Waygu Yamazaki, A4', 'Sauce wafu', 'Mayonnaise', 'Yaourt grec', 'Tahini', 'Huile de sésame', 'Gingembre', 'Vinaigre de riz', 'Sauce soja', 'Poivre', 'Graines de sésame torréfiées', 'Mirin', 'Sauce curry blanc citronnelle, petits pois', 'Petits pois écossés',
+        'Mélisse citronnelle', 'Pâte de tom yum cuits dans le beurre', 'Lait de coco', 'Crème', 'Dashi', 'Jus de volaille', 'Marinade', 'Jus de gingembre', 'Sauce chili garlic', 'Pâte de soja', 'Aubergine grillée réduite en purée', 'Pâte de miso campagne', 'Beurre', 'Mini carottes (orange et jaunes)',
+        'Mini navet', 'Radis rouges', 'Brocoli', 'Bok choy', 'Champignons shimeji', 'Mini maïs', 'Persil plat', 'Mélange de sésame', 'Wasabi', 'Ume', 'Feuille de nori', 'Salade japonaise de la famille du chou', 'Aubergine confit à l’huile d’olive', 'Glacé au miel et vinaigre de vin rouge',
+        'Miel', 'Biscuit moelleux noisette', 'Mousse pralinée noisette', 'Yuzu', 'Glace pralinée', 'Crème brulée', 'Vanille', 'Litchi', 'Sorbet passion', 'Espuma hibiscus', 'Tuile cacao', 'Crémeux chocolat tonka', 'Ganache chocolat blanc', 'Glace chocolat', 'Confit de noix de coco', 'Purée de mangue',
+        'Glace noix de coco', 'Minestrone d’ananas', 'Crémeux passion', 'Sorbet mangue', 'Thé vert matcha', 'Chocolat coco', 'Chocolat noisette', 'Mangue', 'Litchi rose', 'Chili garlic', 'Ballotine de poulpe cuit et découpé en fines tranches', 'Julienne de shiso', 'Cress de shiso rouge',
+        'Vinaigrette gingembre ponzu', 'O-toro', 'Saumon', 'Oeuf de saumon', 'Hamachi', 'Mayonnaise yuzu', 'Piment sansho', 'Gingembre haché', 'Coeur de laitue', 'Marinade 2 : 24h dans un mélange de mirin, sucre et miso', 'Marinade 1 : sucre et sel durant 3 heures', 'Sauce soja épicée',
+        'Wasabi frais', 'Sel de guérande', 'Sel', 'Cabillaud', 'Curry blanc et pâte de tom yum cuits dans le beurre', 'Pâte de soja blanc', 'Turbot', 'Jus de citron', 'Miso', 'Vinaigrette sésame et huile d\'olive', 'Sésame torréfié', 'Pickles d\'oignons rouges'];
 
             const gamelist = [
-                {0: {id: 'Taco Sakana', ingredients: ['chips de maïs', 'ceviche de poisson blanc', 'saumon', 'guacamole', 'citron épicé', 'nori', 'mayonnaise japonaise', 'coriandre']}},
-                {1: {id: 'New Style Hamachi', ingredients: ['sashimis de yellowtail', 'sauce ponzu', 'huile de truffe', 'truffe fraîche', 'mesclun', 'vinaigrette au miel']}},
-                {2: {id: 'Spring rolls de homard', ingredients: ['feuille de riz', 'épinard', 'oignon', 'carotte', 'mangue', 'avocat', 'homard', 'coriandre', 'concombre', 'mayonnaise japonaise', 'sauce sweet chili']}},
-                {3: {id: 'Patte de crabe grillée miso', ingredients: ['pate de crabe décortiquée puis cuit aux grill', 'sauce sésame miso', 'brunoise d’échalottes', 'tomates', 'herbes aromatiques']}},
-                {4: {id: 'Hot Yakuza', ingredients: ['maki roll en tempura', 'saumon', 'cream cheese', 'sauce teriyaki', 'sésame', 'cébette']}},
-                {5: {id: 'Tartare de Toro', ingredients: ['tartare de ventrêche de thon', 'sauce ponzu', 'chips de patate douce', 'oeuf de caille', 'caviar', 'chips de maïs']}},
-                {6: {id: 'Salade King Crab', ingredients: ['king crab blanchit', 'oeuf tobico', 'mesclun', 'avocat', 'chips de lotus grillé', 'vinaigrette au vinaigre rouge']}},
-                {7: {id: 'Salade Crunch', ingredients: ['salade iceberg', 'sauce oignon', 'pignons de pins', 'chips de lotus grillé', 'nori']}},
-                {8: {id: 'Horenso no goma', ingredients: ['épinard blanchis', 'sauce sésame', 'chips de lotus grillé']}},
-                {9: {id: 'Ika Crispy', ingredients: ['seiches croustillants', 'piments padron', 'citron vert au shishimi togarachi', 'mayonnaise wasabi']}},
-                {10: {id: 'Tataki de thon', ingredients: ['tranche de thon en tataki', 'saisi en extérieur', 'sauce yuzu miso', 'cru à l’intérieur', 'salade vinaigrette wasabi', 'chips de lotus grillé']}},
-                {11: {id: 'California ', ingredients: ['saumon', 'crevette', 'concombre', 'mangue', 'mayonnaise japonaise', 'oeuf tobico']}},
-                {12: {id: 'Spider roll', ingredients: ['feuille de riz', 'shofshell crab frit', 'saumon', 'avocat']}},
-                {13: {id: 'Spicy tuna', ingredients: ['tartare de thon épicé', 'choux chinois', 'oeuf tobico', 'chips de lotus grillé']}},
-                {14: {id: 'Maki Toro', ingredients: ['nori', 'sauce ponzu', 'king crab', 'toro', 'caviar feuille d’or']}},
-                {15: {id: 'Ura Veggie', ingredients: ['asperge', 'carotte', 'épinard', 'salade', 'patate douce']}},
-                {16: {id: 'Futomaki', ingredients: ['feuille de riz', 'thon', 'saumon', 'tamago', 'avocat', 'kampyo', 'masago', 'concombre', 'radis', 'sauce yuzu miso']}},
-                {17: {id: 'Unagui', ingredients: ['anguille', 'foie gras', 'sunomono de pomme verte', 'sauce teriyaki']}},
-                {18: {id: 'Yakuza First Choice', ingredients: ['saumon', 'toro', 'la yu', 'king crab', 'patate douce', 'feuille de soja']}},
-                {19: {id: 'Hosomaki Toro', ingredients: ['toro', 'ciboulette', 'feuille de riz']}},
-                {20: {id: 'Kuro Tara Gindara', ingredients: ['black cod', 'sésame', 'miso', 'tamarin']}},
-                {21: {id: 'Asperges Yaki', ingredients: ['asperges grillées', 'sauce sésame']}},
-                {22: {id: 'Brocollini', ingredients: ['brocollini vapeur,', 'sauce sésame']}},
-                {23: {id: 'Champignon ', ingredients: ['champignons portobello', 'sauce sésame']}},
-                {24: {id: 'Nouilles Udon', ingredients: ['nouille de riz', 'sauce sweet chili', 'légumes sautés', 'avec ou sans calamar']}},
-                {25: {id: 'Tempura Ebi', ingredients: ['brocoli', 'carotte', 'choux fleurs', 'patate douce', 'oignon']}},
-                {26: {id: 'Gunkan Padron', ingredients: ['thon épicé', 'saumon', 'gingembre', 'piment padron', 'oeuf tobico', 'mayonnaise wasabi']}},
-                {27: {id: 'Gunkan Hotate', ingredients: ['thon', 'saint jacques', 'vinaigrette soja', 'oeuf tobico']}},
-                {28: {id: 'Gunkan Roi', ingredients: ['saumon', 'king crab', 'oeuf de caille', 'oeuf tobico']}},
-                {29: {id: 'Gunkan Ama Ebi', ingredients: ['yellowtail', 'crevette d’eau douce', 'mayonnaise wasabi', 'chips de patate douce']}},
-                {30: {id: 'Gunkan Toro', ingredients: ['ventrèche de thon snakée', 'thon', 'foie gras', 'chips de poireaux']}},
-                {31: {id: 'Gunkan Iwashi', ingredients: ['thon', 'oeuf de sardine', 'oeuf']}},
-                {32: {id: 'Gunkan Shiromi', ingredients: ['poisson blanc', 'zest de citron vert', 'gingembre confit']}},
-                {33: {id: 'Nigiri New Style', ingredients: ['saumon', 'gingembre confit', 'zest de citron vert']}},
-                {34: {id: 'Nigiri Engawa', ingredients: ['turbot braisé', 'yukari', 'citron vert', 'coriandre']}},
-                {35: {id: 'Nigiri anguille foie gras', ingredients: ['anguille grillée au soja', 'sunomono de pomme verte', 'foie gras', 'sauce teryaki']}},
-                {36: {id: 'Nigiri thon tamago', ingredients: ['thon', 'pickels d’oeuf de caille', 'oeuf de sardine', 'coriandre', 'tamago']}},
-                {37: {id: 'Nigiri saumon truffe', ingredients: ['saumon braisé', 'fleur de sel', 'truffe fraîche']}}
+                {0: {id: 'Riz soufflé', ingredients: ['Riz soufflé', 'Tartare de saumon', 'Mayonnaise chili garlic']}},
+                {1: {id: 'Tacos waygu', ingredients: ['Rumsteak de wagyu gravelax', 'Tobiko parfumé au wasabi', 'Huile d\'olive', 'Avocat', 'Mayonnaise japonaise', 'Citron vert', 'Chili garlic', 'Cébettes', 'Zest de citron vert']}},
+                {2: {id: 'Galette de thon, tarama à la truffe blanche', ingredients: ['Fine galette de riz', 'Tarama blanc a la truffe', 'Tranches de thon', 'Tobiko', 'Vinaigrette ponzu truffe', 'Zest de citron vert', 'Shiso rouge', 'Vene cress']}},
+                {3: {id: 'Rock shrimp', ingredients: ['Crevettes de roche en tempura', 'Mayonnaise chili', 'Sel de miso']}},
+                {4: {id: 'Baeri Imperial de Sologne – Maison Russe', ingredients: ['Baeri caviar', 'Blinis', 'Jaune d\'oeuf', 'Blanc d\'oeuf', 'Echalotes', 'Capres', 'Cornichons', 'Creme d\'isigny']}},
+                {5: {id: 'Osciètre – Maison Russe', ingredients: ['Caviar Osciètre', 'Blinis', 'Jaune d\'oeuf', 'Blanc d\'oeuf', 'Echalotes', 'Capres']}},
+                {6: {id: 'Carpaccio de Poulpe', ingredients: ['Ballotine de poulpe cuit et découpé en fines tranches', 'Vinaigrette yuzu kosho', 'Marinade ponzu', 'Pousse de mizuna', 'Mélange de graine crispy (sésame, riz soufflé et sarrasin soufflé)', 'Julienne de shiso', 'Cress de shiso rouge']}},
+                {7: {id: 'Carpaccio de Hamachi', ingredients: ['Carpaccio de Hamachi', 'Julienne de jalpenos', 'Oignons rouges', 'Cébettes', 'Oeuf de brochet fumé', 'Vene cress']}},
+                {8: {id: 'Carpaccio de langoustine', ingredients: ['Langoustine en carpaccio', 'Gel de dashi', 'Citron caviar', 'Graines de sesame', 'Pousse de coriandre', 'Oxalis rouge']}},
+                {9: {id: 'Tataki de thon', ingredients: ['Pois gourmands', 'Thon passé au sel, cuit façon tataki', 'Chips d’ail', 'Cébettes', 'Coriander cress', 'Vinaigrette ponzu marinade oignons']}},
+                {10: {id: 'Tataki de boeuf', ingredients: ['Vinaigrette truffée', 'Portobello', 'Boeuf en tataki', 'Cébettes', 'Sésame']}},
+                {11: {id: 'Tataki de saumon ', ingredients: ['Marinade black cod (mirin, miso, sucre et saké)', 'Vinaigre de xéres', 'Huile de noisette', 'Huile de tournesol', 'Jaune d\'oeuf', 'Sucrine', 'Julienne de carotte']}},
+                {12: {id: 'Tartare de daurade', ingredients: ['Tartare de daurade', 'Vinaigrette sésame', 'Yuzu confit', 'Salicorne', 'Oignons rouges']}},
+                {13: {id: 'Tartare de thon', ingredients: ['Thon rouge en tartare', 'Togarashi', 'Oignons pickles', 'Chips de riz furikake', 'Vinaigrette gingembre ponzu', 'Avocat']}},
+                {14: {id: 'Tartare de O-toro caviar', ingredients: ['Baeri caviar', 'Chips de riz furikake', 'Creme d\'isigny', 'Huile d\'olive', 'Ciboulette', 'O-toro', 'Jus de citron vert']}},
+                {15: {id: 'California avocat', ingredients: ['Avocat fumé grillé', 'Concombre', 'Cream cheese', 'Shiso']}},
+                {16: {id: 'California saumon', ingredients: ['Saumon', 'Concombre', 'Avocat', 'Mayonnaise wasabi', 'Coriander cress', 'Oeuf de saumon']}},
+                {17: {id: 'California Ebi-fry', ingredients: ['Gambas panko', 'Furikake', 'Mayonnaise chipotlé', 'Avocat', 'Tobiko']}},
+                {18: {id: 'California Hamachi', ingredients: ['Concombre', 'Avocat', 'Hamachi', 'Ciboulette', 'Zest de citron vert', 'Mayonnaise iodée']}},
+                {19: {id: 'California bœuf', ingredients: ['Tartare de boeuf', 'Céleri branche', 'Mayonnaise timut', 'Sésame', 'Yuzu', 'Shiso rouge']}},
+                {20: {id: 'California Spicy tuna', ingredients: ['Avocat', 'Chili garlic', 'Bonite séchée', 'Tartare de thon assaisonné au chili garlic', 'Sauce soja yamato', 'Ciboulette', 'Togarashi', 'Mayonnaise chipotlé']}},
+                {21: {id: 'California King Crab', ingredients: ['King crab', 'Pommes grany smith', 'Avocat', 'Mayonnaise yuzu', 'Shiso rouge', 'Sésame', 'Sel de miso']}},
+                {22: {id: 'Yakitori volaille', ingredients: ['Haut de cuisses de poulet mariné', 'Ail', 'Aji amarillo', 'Grillé à la robata puis glacé au mirin']}},
+                {23: {id: 'Yakitori bœuf ', ingredients: ['Brochettes de boeuf', 'Sauce teriyaki', 'Piment sansho', 'Gingembre haché', 'Cébettes']}},
+                {24: {id: 'Yakitori crevettes', ingredients: ['Crevettes marinées au gingembre, ail haché, togarashi', 'Condiment ume kosho', 'Cébettes', 'Sésame', 'Sel de miso', 'Vinaigrette : huile de truffe, yuzu et citron vert']}},
+                {25: {id: 'Salade de pousses d’épinards', ingredients: ['Poutargue', 'Parmesan', 'Oignons frits', 'Bonite séchée', 'Sel de miso', 'Copeaux de radis rouge']}},
+                {26: {id: 'Cœur de laitue', ingredients: ['Avocat', 'Quinoa', 'Vinaigrette miso-yuzu', 'Coeur de laitue', 'Chips d’ail', 'Jus de citron vert', 'Copeaux de radis rouge']}},
+                {27: {id: 'Salade Homard', ingredients: ['Homard', 'Mix de quinoa blanc et rouge', 'Edamame décortiqués', 'Sauce vierge froide', 'Tomates', 'Navet long', 'Pousse cress vénéré', 'Pommes grany smith', 'Menthe', 'Citron vert', 'Huile d\'olive', 'Pousse de coriandre', 'Shiso rouge', 'Sel de miso']}},
+                {28: {id: 'Poulet karaage', ingredients: ['Poulet mariné dans lait ribot', 'Ail haché', 'Gingembre', 'Sel de miso', 'Togarashi', 'Coriandre', 'Mayonnaise ume']}},
+                {29: {id: 'Poulpe', ingredients: ['Poulpe mariné et grillé à l’huile d’olive', 'Purée de pommes de terre à l’ail rapé et coriandre ciselée', 'Vinaigrette à l’échalotte', 'Maïs grillé au barbecue et assaisonné avec sauce teriyaki']}},
+                {30: {id: 'Black cod', ingredients: ['Colin d’Alaska', 'Pickles de concombre', 'Marinade 1 : sucre et sel durant 3 heures', 'Marinade 2 : 24h dans un mélange de mirin, sucre et miso']}},
+                {31: {id: 'Filet de bœuf', ingredients: ['Coeur de filet de bœuf, saisi et fumé au robata', 'Sauce teriyaki au poivre']}},
+                {32: {id: 'Wagyu Yamazaki A4', ingredients: ['Faux filet de Waygu Yamazaki, A4', 'Sauce wafu', 'Sauce soja épicée', 'Wasabi frais', 'Sel de guérande']}},
+                {33: {id: 'Sauce wafu (Wagyu Yamazaki)', ingredients: ['Mayonnaise', 'Yaourt grec', 'Tahini', 'Huile de sésame', 'Gingembre', 'Ail', 'Vinaigre de riz', 'Sauce soja', 'Sel', 'Poivre', 'Graines de sésame torréfiées']}},
+                {34: {id: 'Cabillaud', ingredients: ['Cabillaud', 'Sel de miso', 'Ciboulette', 'Sauce curry blanc citronnelle, petits pois', 'Petits pois écossés', 'Mélisse citronnelle', 'Vene cress', 'Shiso rouge']}},
+                {35: {id: 'Curry blanc (sauce cabillaud)', ingredients: ['Curry blanc et pâte de tom yum cuits dans le beurre', 'Lait de coco', 'Crème', 'Dashi']}},
+                {36: {id: 'Côtelettes d’agneau', ingredients: ['Jus de volaille', 'Aubergine grillée réduite en purée', 'Pâte de soja blanc', 'Pousse de coriandre', 'Chips d’ail', 'Sel de miso', 'Sauce marinade']}},
+                {37: {id: 'Marinade (sauce côtelettes d’agneau)', ingredients: ['Jus de gingembre', 'Sauce chili garlic', 'Mirin', 'Pâte de soja', 'Yaourt grec']}},
+                {38: {id: 'Turbot', ingredients: ['Turbot', 'Sauce soja yamato', 'Jus de citron', 'Beurre', 'Pâte de miso campagne', 'Crème']}},
+                {39: {id: 'Légumes vapeur', ingredients: ['Mini carottes (orange et jaunes)', 'Mini navet', 'Radis rouges', 'Brocoli', 'Bok choy', 'Champignons shimeji', 'Mini maïs', 'Huile de sésame', 'Sésame doré', 'Sel de miso']}},
+                {40: {id: 'Sauce pour légumes vapeur', ingredients: ['Echalotes', 'Persil plat', 'Coriandre', 'Miso', 'Yuzu', 'Yaourt grec']}},
+                {41: {id: 'Riz vinaigré, furikake rose', ingredients: ['Furikake rose', 'Wasabi', 'Ume', 'Feuille de nori', 'Sésame doré']}},
+                {42: {id: 'Salade mizuna', ingredients: ['Salade japonaise de la famille du chou', 'Vinaigrette sésame et huile d\'olive', 'Yuzu', 'Sésame torréfié', 'Pickles d\'oignons rouges']}},
+                {43: {id: 'Champignons Portobello', ingredients: ['Champignons Portobello', 'Sauce teriyaki', 'Echalotes', 'Cébettes']}},
+                {44: {id: 'Aubergine Miso', ingredients: ['Aubergine confit à l’huile d’olive', 'Glacé au miel et vinaigre de vin rouge', 'Miel', 'Aji amarillo', 'Vinaigre de xéres', 'Huile de sésame', 'Coriander cress', 'Shiso rouge', 'Fleur de sel']}},
+                {45: {id: 'Noisette yuzu', ingredients: ['Biscuit moelleux noisette', 'Mousse pralinée noisette', 'Yuzu', 'Glace pralinée']}},
+                {46: {id: 'L\'hibiscus', ingredients: ['Crème brulée', 'Vanille', 'Litchi', 'Sorbet passion', 'Espuma hibiscus', 'Shiso rouge']}},
+                {47: {id: 'Tout chocolat', ingredients: ['Tuile cacao', 'Crémeux chocolat tonka', 'Ganache chocolat blanc', 'Glace chocolat']}},
+                {48: {id: 'Coconut', ingredients: ['Confit de noix de coco', 'Purée de mangue', 'Glace noix de coco']}},
+                {49: {id: 'Exotique', ingredients: ['Minestrone d’ananas', 'Crémeux passion', 'Sorbet mangue']}},
+                {50: {id: 'Mochis', ingredients: ['Thé vert matcha', 'Chocolat coco', 'Chocolat noisette', 'Mangue', 'Litchi rose', 'Yuzu']}}
             ];
 
             function replace_dish_name(name) {
@@ -77,7 +100,7 @@
 
                     $('#ingredient-' + ingredient_idx).on('input', function(){
                         for (const idgt of gamelist[x][x].ingredients) {
-                            if (this.value.toLowerCase() === idgt) {
+                            if (this.value === idgt) {
                                 $(this).css('background-color', '#5cb85c');
                             }
                         }
@@ -88,8 +111,9 @@
             }
 
             function populate_game() {
-                var id_rand = Math.floor(Math.random() * 38);
+                var id_rand = Math.floor(Math.random() * gamelist.length);
                 var dish_name = gamelist[id_rand][id_rand].id;
+                console.log(gamelist.length);
 
                 replace_dish_name(dish_name);
                 add_dish_input(id_rand);
@@ -113,7 +137,7 @@
     
     <body>
         <div class="container">
-            <h1 class="text-center">Yakukoi</h1>
+            <h1 class="text-center">Mun Test</h1>
 
             <h4 id="dishtitle"></h4>
 
