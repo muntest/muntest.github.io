@@ -4,12 +4,14 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
         
         <script>
+            var GAME_TYPE = 0;
+
             const lexic = ['Edamame', 'Sel de miso', 'Edamame Spicy Sauce', 'Riz soufflé', 'Tartare de saumon', 'Mayonnaise chili garlic', 'Rumsteak de wagyu gravelax', 'Tobiko parfumé au wasabi', 'Huile d\'olive', 'Avocat', 'Mayonnaise japonaise', 'Citron vert',
         'Fine galette de riz', 'Tarama blanc a la truffe', 'Tranches de thon', 'Tobiko', 'Vinaigrette ponzu truffe', 'Zest de citron vert', 'Shiso rouge', 'Vene cress', 'Crevettes de roche en tempura', 'Mayonnaise chili', 'Citron', 'Baeri caviar', 'Blinis', 'Jaune d\'oeuf', 'Blanc d\'oeuf',
         'Echalotes', 'Capres', 'Cornichons', 'Creme d\'isigny', 'Caviar Osciètre', 'Poulpe', 'Vinaigrette yuzu kosho', 'Shiso', 'Marinade ponzu', 'Pousse de mizuna', 'Mélange de graine crispy (sésame, riz soufflé et sarrasin soufflé)', 'Carpaccio de Hamachi', 'Julienne de jalpenos',
@@ -29,6 +31,38 @@
         'Vinaigrette gingembre ponzu', 'O-toro', 'Saumon', 'Oeuf de saumon', 'Hamachi', 'Mayonnaise yuzu', 'Piment sansho', 'Gingembre haché', 'Coeur de laitue', 'Marinade 2 : 24h dans un mélange de mirin, sucre et miso', 'Marinade 1 : sucre et sel durant 3 heures', 'Sauce soja épicée',
         'Wasabi frais', 'Sel de guérande', 'Sel', 'Cabillaud', 'Curry blanc et pâte de tom yum cuits dans le beurre', 'Pâte de soja blanc', 'Turbot', 'Jus de citron', 'Miso', 'Vinaigrette sésame et huile d\'olive', 'Sésame torréfié', 'Pickles d\'oignons rouges'];
 
+            const alcools_lexic = ['Chardonnay', 'Pinot Noir', 'Pinot Meunieur', 'Grenache', 'Cinsault', 'Tibouren', 'Marsanne', 'Syrah', 'Viognier', 'Sauvignon', 'Cabernet Sauvignon', 'Carbernet Franc', 'Merlot', 'Roussanne', 'Vodka Grey Goose', 'Eau de coco', 'Chartreuse jaune',
+        'Sirop de Earl Grey', 'Lime', 'Tuile de miel', 'Gin Ki no bi', 'Liqueur St Germain', 'Saké de l’Atelier du saké', 'Eau de rose', 'Jus de litchi', 'Prossecco', 'Eau pétillante', 'Zeste d\'orange Mun', 'Vodka Elix infusée au thé fumé Mun', 'Sirop de citron noir', 'Sésame noir', 'Charbon végétal',
+        'Sésame', 'Citron noir', 'Cognac Henessy VS infusé au riz toasté', 'Mousse de riz', 'Citron jaune', 'Sirop de riz', 'Riz soufflé', 'Gin beefeater', 'Martini rouge', 'Campari', 'Ananas', 'Coriandre', 'Poivre de timut', 'Botte de coriandre', 'Tranche d’orange brulé au chalumeau',
+        'Rhum Bacardi Carta Blanca infusé au timut', 'Cordial ananas beurre', 'Jus de citron vert', 'Shrub de gingembre (vinaigre, sucre et gingembre)', 'Saké', 'Shiso vert', 'Téquila Altos Plata', 'Pamplemousse', 'Saké Nigori', 'Saké pétillant', 'Poudre de pamplemousse déshydraté', 'Zest de citron vert',
+        'Soja ponzu', 'Purée de coco Ponthier', 'Jus de yuzu', 'Simple sirop', 'Jus ananas', 'Ananas déshydraté toasté', 'Jus de melon', 'Purée de pêche', 'Pandan', 'Fleur d’oranger'];
+
+            const alcools_gamelist = [
+                {0: {id: "Ruinart Blanc de Blancs - Verre", ingredients: ['Chardonnay']}},
+                {1: {id: "Veuve Clicquot Rosé - Verre", ingredients: ['Pinot Noir', 'Chardonnay', 'Pinot Meunier']}},
+                {2: {id: "Dom Pérignon, 2013 - Verre", ingredients: ['Pinot Noir', 'Chardonnay']}},
+                {3: {id: "Roseblood d'Estoublon, 2021 - Verre", ingredients: ['Tibouren', 'Grenache', 'Cinsault']}},
+                {4: {id: "Chablis, Domaine Olivia Lecestre, 2021 - Verre", ingredients: ['Chardonnay']}},
+                {5: {id: "Saint-Romain, David Moret, 2021 - Verre", ingredients: ['Chardonnay']}},
+                {6: {id: "Crozes-Hermitage, Terres Blanches, Domaine Belle, 2021 - Verre", ingredients: ['Marsanne', 'Roussanne']}},
+                {7: {id: "Condrieu, Pagus Luminis, Louis Chèze, 2021 - Verre", ingredients: ['Viognier']}},
+                {8: {id: "Sancerre, Signature, Pascal Jolivet, 2022 - Verre", ingredients: ['Sauvignon']}},
+                {9: {id: "Sancerre, Domaine Vacheron - Verre", ingredients: ['Pinot Noir']}},
+                {10: {id: "Margaux, Margaux du Château Margaux, 2015 - Verre", ingredients: ['Cabernet Sauvignon', 'Merlot', 'Cabernet Franc']}},
+                {11: {id: "Bourgogne Hautes-Côtes de Beaune, Domaine Billard, 2021 - Verre", ingredients: ['Pinot Noir']}},
+                {12: {id: "Gevrey-Chambertin, Vielles Vignes, Domaine Rossignol-Trapet 2019 - Verre", ingredients: ['Pinot Noir']}},
+                {13: {id: "Crozes-Hermitage, Domaine Yann Chave, 2021 - Verre", ingredients: ['Syrah']}},
+                {14: {id: "Kaori", ingredients: ['Vodka Grey Goose', 'Saké Nigori', 'Eau de coco', 'Chartreuse jaune', 'Sirop de Earl Grey', 'Lime', 'Tuile de miel']}},
+                {15: {id: "Mana", ingredients: ['Gin Ki no bi', 'Liqueur St Germain', 'Saké de l’Atelier du saké', 'Eau de rose', 'Jus de litchi', 'Prossecco', 'Eau pétillante', 'Zeste d\'orange Mun']}},
+                {16: {id: "Kuro Tsuki", ingredients: ['Vodka Elix infusée au thé fumé Mun', 'Jus de litchi', 'Sirop de citron noir', 'Sésame noir', 'Charbon végétal', 'Sésame', 'Citron noir']}},
+                {17: {id: "Osaka", ingredients: ['Cognac Henessy VS infusé au riz toasté', 'Mousse de riz', 'Citron jaune', 'Sirop de riz', 'Riz soufflé']}},
+                {18: {id: "Saika", ingredients: ['Gin beefeater', 'Martini rouge', 'Campari', 'Ananas', 'Coriandre', 'Poivre de timut', 'Botte de coriandre', 'Tranche d’orange brulé au chalumeau']}},
+                {19: {id: "Manzoku", ingredients: ['Rhum Bacardi Carta Blanca infusé au timut', 'Cordial ananas beurre', 'Jus de citron vert', 'Shrub de gingembre (vinaigre, sucre et gingembre)', 'Saké', 'Shiso vert']}},
+                {20: {id: "Natsu", ingredients: ['Téquila Altos Plata', 'Pamplemousse', 'Saké Nigori', 'Saké pétillant', 'Poudre de pamplemousse déshydraté', 'Zest de citron vert']}},
+                {21: {id: "Anazu", ingredients: ['Soja ponzu', 'Purée de coco Ponthier', 'Jus de yuzu', 'Simple sirop', 'Jus ananas', 'Ananas déshydraté toasté']}},
+                {22: {id: "Yubari", ingredients: ['Jus de melon', 'Purée de pêche', 'Pandan', 'Fleur d’oranger']}}
+            ];
+
             const gamelist = [
                 {0: {id: 'Riz soufflé', ingredients: ['Riz soufflé', 'Tartare de saumon', 'Mayonnaise chili garlic']}},
                 {1: {id: 'Tacos waygu', ingredients: ['Rumsteak de wagyu gravelax', 'Tobiko parfumé au wasabi', 'Huile d\'olive', 'Avocat', 'Mayonnaise japonaise', 'Citron vert', 'Chili garlic', 'Cébettes', 'Zest de citron vert']}},
@@ -39,7 +73,7 @@
                 {6: {id: 'Carpaccio de Poulpe', ingredients: ['Ballotine de poulpe cuit et découpé en fines tranches', 'Vinaigrette yuzu kosho', 'Marinade ponzu', 'Pousse de mizuna', 'Mélange de graine crispy (sésame, riz soufflé et sarrasin soufflé)', 'Julienne de shiso', 'Cress de shiso rouge']}},
                 {7: {id: 'Carpaccio de Hamachi', ingredients: ['Carpaccio de Hamachi', 'Julienne de jalpenos', 'Oignons rouges', 'Cébettes', 'Oeuf de brochet fumé', 'Vene cress']}},
                 {8: {id: 'Carpaccio de langoustine', ingredients: ['Langoustine en carpaccio', 'Gel de dashi', 'Citron caviar', 'Graines de sesame', 'Pousse de coriandre', 'Oxalis rouge']}},
-                {9: {id: 'Tataki de thon', ingredients: ['Pois gourmands', 'Thon passé au sel, cuit façon tataki', 'Chips d’ail', 'Cébettes', 'Coriander cress', 'Vinaigrette ponzu marinade oignons']}},
+                {9: {id: 'Tataki de thon', ingredients: ['Pois gourmands', 'Thon passé au sel, cuit façon tataki', 'Chips d’ail', 'Cébettes', 'Coriander cress', 'Vinaigrette ponzu marinade oignons', 'Oignons rouges']}},
                 {10: {id: 'Tataki de boeuf', ingredients: ['Vinaigrette truffée', 'Portobello', 'Boeuf en tataki', 'Cébettes', 'Sésame']}},
                 {11: {id: 'Tataki de saumon ', ingredients: ['Marinade black cod (mirin, miso, sucre et saké)', 'Vinaigre de xéres', 'Huile de noisette', 'Huile de tournesol', 'Jaune d\'oeuf', 'Sucrine', 'Julienne de carotte']}},
                 {12: {id: 'Tartare de daurade', ingredients: ['Tartare de daurade', 'Vinaigrette sésame', 'Yuzu confit', 'Salicorne', 'Oignons rouges']}},
@@ -90,16 +124,19 @@
             function add_dish_input(x) {
                 var ingredient_idx = 0;
                 var options = '';
+                var game_lexic = GAME_TYPE === 0 ? lexic : alcools_lexic;
+                var game_ingredients = GAME_TYPE === 0 ? gamelist : alcools_gamelist;
 
-                for (const name of lexic.sort()) {
+                for (const name of game_lexic.sort()) {
                     options += "<option>" + name + "</option>";
                 }
 
-                for (const element of gamelist[x][x].ingredients) {
+                console.log(options);
+                for (const element of game_ingredients[x][x].ingredients) {
                     $("#gamewrapper").append("<p><select class='igdt-input form-control' id='ingredient-" + ingredient_idx + "'><option value='' selected disabled hidden>Choose here</option>" + options + "</select></p>");
 
                     $('#ingredient-' + ingredient_idx).on('input', function(){
-                        for (const idgt of gamelist[x][x].ingredients) {
+                        for (const idgt of game_ingredients[x][x].ingredients) {
                             if (this.value === idgt) {
                                 $(this).css('background-color', '#5cb85c');
                             }
@@ -111,8 +148,8 @@
             }
 
             function populate_game() {
-                var id_rand = Math.floor(Math.random() * gamelist.length);
-                var dish_name = gamelist[id_rand][id_rand].id;
+                var id_rand = (GAME_TYPE === 0 ? Math.floor(Math.random() * gamelist.length) : Math.floor(Math.random() * alcools_gamelist.length));
+                var dish_name = (GAME_TYPE === 0 ? gamelist[id_rand][id_rand].id : alcools_gamelist[id_rand][id_rand].id);
 
                 replace_dish_name(dish_name);
                 add_dish_input(id_rand);
@@ -129,6 +166,22 @@
                     $("#gamewrapper").html('');
                     populate_game();
                 });
+
+                $("#flexSwitchCheckDefault").on("click", function(){
+
+                    if (GAME_TYPE === 0) {
+                        $("#switchContent").text("Alcools");
+                        GAME_TYPE = 1;
+                        $("#gamewrapper").html('');
+                        populate_game();
+                    }
+                    else {
+                        $("#switchContent").text("Food");
+                        GAME_TYPE = 0;
+                        $("#gamewrapper").html('');
+                        populate_game();
+                    }
+                });
                 
             });
         </script>
@@ -142,8 +195,20 @@
             <h4 id="dishtitle"></h4>
 
             <div id="gamewrapper" class="container"></div>
+            
+            <div class="row">
+                <div class="col">
+                    <div id="lexicSwitch" class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" autocomplete="off">
+                        <label id="switchContent" class="form-check-label" for="flexSwitchCheckDefault">Food</label>
+                    </div>
+                </div>
 
-            <button type="button" id="nextguess" class="btn btn-info center-block">Next</button>
+                <div id="button-wrapper" class="col col-4">
+                    <button type="button" id="nextguess" class="btn btn-info pull-right">Next</button>
+                </div>
+            </div>
+              
         </div>
     </body>
 </html>
